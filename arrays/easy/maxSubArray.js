@@ -39,12 +39,12 @@ const maxSubArray = function(nums) {
     let maxCurrent = nums[0];
     let maxGlobal = nums[0];
     
-    for (let i = 0; i < nums.length; i++) {
+    for (let i = 1; i < nums.length; i++) {
         
-        if (maxCurrent + nums[i + 1] > nums[i + 1]) {
-            maxCurrent = maxCurrent + nums[i + 1];
+        if (maxCurrent + nums[i] > nums[i]) {
+            maxCurrent = maxCurrent + nums[i];
         } else {
-            maxCurrent = nums[i + 1];
+            maxCurrent = nums[i];
         }
         
         if (maxCurrent > maxGlobal) {
