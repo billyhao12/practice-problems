@@ -23,26 +23,37 @@ strs[i] consists of only lower-case English letters.
  * @return {string}
  */
 const longestCommonPrefix = function(strs) {
+    // return variable
     let prefix = "";
     
     if (strs === null || strs.length === 0) {
         return prefix;
     }
     
-    let comparisonWord = strs[0];
-    let otherIndex = 0;
+    // this never changes
+    const comparisonWord = strs[0];
+
+    // keeps track of letters in other words
+    let otherLetterIndex = 0;
     
+    // loops thru letters of comparisonWord
     for (let comparisonLetter of comparisonWord) {
+
+        // compare comparisonWord with other words
         for (let i = 1; i < strs.length; i++) {
             
             // if a letter doesn't match, return prefix
-            if (comparisonLetter !== strs[i][otherIndex]) {
+            if (comparisonLetter !== strs[i][otherLetterIndex]) {
                 return prefix;
             }
-            
+
         }
+
+        // add the common letter to the prefix variable
         prefix += comparisonLetter;
-        otherIndex++;
+
+        // advance pointer for other letters
+        otherLetterIndex++;
     }
     
     // This case is reached when comparisonWord matches the first letters of every other word
