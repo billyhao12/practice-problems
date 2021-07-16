@@ -68,6 +68,17 @@ const addTwoNumbers = function(l1, l2) {
     return dummyHead.next;
 };
 
+// Override `toString()` method
+ListNode.prototype.toString = function listNodeToString() {
+    const arrayRepresentation = [];
+    let pointer = this;
+    while (pointer) {
+        arrayRepresentation.push(pointer.val);
+        pointer = pointer.next;
+    }
+    return arrayRepresentation;
+}
+
 // Test Case 1
 const list1Node1 = new ListNode(2);
 const list1Node2 = new ListNode(4);
@@ -81,13 +92,13 @@ const list2Node3 = new ListNode(4);
 list2Node1.next = list2Node2;
 list2Node2.next = list2Node3;
 
-console.log(addTwoNumbers(list1Node1, list2Node1)); // [7, 0, 8]
+console.log(addTwoNumbers(list1Node1, list2Node1).toString()); // [7, 0, 8]
 
 // Test Case 2
 const list3Node1 = new ListNode(0);
 const list4Node1 = new ListNode(0);
 
-console.log(addTwoNumbers(list3Node1, list4Node1)); // [0]
+console.log(addTwoNumbers(list3Node1, list4Node1).toString()); // [0]
 
 // Test Case 3
 const list5Node1 = new ListNode(9);
@@ -112,4 +123,4 @@ list6Node1.next = list6Node2;
 list6Node2.next = list6Node3;
 list6Node3.next = list6Node4;
 
-console.log(addTwoNumbers(list5Node1, list6Node1)); // [8,9,9,9,0,0,0,1]
+console.log(addTwoNumbers(list5Node1, list6Node1).toString()); // [8,9,9,9,0,0,0,1]
